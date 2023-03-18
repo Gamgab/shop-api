@@ -22,8 +22,11 @@ app.use(
       "X-Requested-With",
       "Content-Type",
       "Authorization",
+      "Access-Control-Allow-Origin",
+      "Accept",
     ],
     credentials: true,
+    preflightContinue: true,
   })
 );
 
