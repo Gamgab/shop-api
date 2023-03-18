@@ -17,6 +17,7 @@ app.use(
   cors({
     origin: "http://127.0.0.1:3000",
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
