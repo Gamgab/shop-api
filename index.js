@@ -12,7 +12,12 @@ const app = express();
 require("dotenv").config();
 
 app.use(express.json());
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use("/api/register", register);
 app.use("/api/login", login);
