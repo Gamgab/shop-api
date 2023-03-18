@@ -41,7 +41,8 @@ app.get("/products", (req, res) => {
   res.send(products);
 });
 
-const uri = process.env.DB_URI;
+const uri =
+  "mongodb+srv://gamgab:shinpoko78@cluster0.fkcfpkx.mongodb.net/e-commerce?retryWrites=true&w=majority";
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
