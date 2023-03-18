@@ -7,28 +7,27 @@ const productsRoute = require("./routes/products");
 
 const products = require("./products");
 
-const app = express();
-
 require("dotenv").config();
+
+const app = express();
 
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: "http://127.0.0.1:3000",
-    methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
-    allowedHeaders: [
-      "Origin",
-      "X-Requested-With",
-      "Content-Type",
-      "Authorization",
-      "Access-Control-Allow-Origin",
-      "Accept",
-    ],
-    credentials: true,
-    preflightContinue: true,
-  })
-);
+let corsOptions = {
+  origin: "http://127.0.0.1:3000",
+  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  allowedHeaders: [
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Origin",
+    "Accept",
+  ],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use("/api/register", register);
 app.use("/api/login", login);
