@@ -4,8 +4,23 @@ const Joi = require("joi");
 const express = require("express");
 const generateAuthToken = require("../utils/generateAuthToken");
 const router = express.Router();
+const cors = require("cors");
 
-router.post("/", async (req, res) => {
+let corsOptions = {
+  origin: "http://127.0.0.1:3000",
+  methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
+  allowedHeaders: [
+    "Origin",
+    "X-Requested-With",
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Origin",
+    "Accept",
+  ],
+  credentials: true,
+};
+
+router.post("/", cors(corsOptions), async (req, res) => {
   const schema = Joi.object({
     email: Joi.string().min(3).max(200).required().email(),
     password: Joi.string().min(6).max(200).required(),
