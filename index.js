@@ -23,6 +23,7 @@ let corsOptions = {
     "Authorization",
     "Access-Control-Allow-Origin",
     "Accept",
+    "x-auth-token",
   ],
   credentials: true,
 };
