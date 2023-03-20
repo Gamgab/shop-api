@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   try {
     const order = new Order({
       userId: userId,
-      products: cartItems,
+      /*products: cartItems,*/
       subtotal: subtotal,
     });
     const savedOrder = await order.save();
