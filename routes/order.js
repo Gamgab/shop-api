@@ -5,35 +5,26 @@ const { isAdmin } = require("../middleware/auth");
 
 const router = express.Router();
 
-// CREATE PRODUCT
+// SAVE ORDER
 // isAdmin est la fonction middleware pour vérifier l'autentification
-router.post("/", isAdmin, async (req, res) => {
-  const { name, brand, desc, price, image } = req.body;
+router.post("/", async (req, res) => {
+  const { cartItems, userId, subtotal } = req.body;
 
   try {
-    if (image) {
-      const uploadRes = await cloudinary.uploader.upload(image, {
-        upload_preset: "onlineShop",
-      });
-
-      if (uploadRes) {
-        const product = new Product({
-          name,
-          brand,
-          desc,
-          price,
-          image: uploadRes,
-        });
-        const savedProduct = await product.save();
-        res.status(200).send(savedProduct);
-      }
-    }
+    const order = new Order({
+      userId: userId,
+      products: cartItems,
+      subtotal: subtotal,
+    });
+    const savedOrder = await order.save();
+    console.log("Commande enregistré", savedOrder);
+    res.status(200).send(savedOrder);
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
   }
 });
-
+/*
 router.get("/", async (req, res) => {
   try {
     const products = await Product.find();
@@ -43,5 +34,5 @@ router.get("/", async (req, res) => {
     res.status(500).send(error);
   }
 });
-
+*/
 module.exports = router;

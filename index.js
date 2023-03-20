@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const register = require("./routes/register");
 const login = require("./routes/login");
 const productsRoute = require("./routes/products");
+const order = require("./routes/order");
 
 const products = require("./products");
 
@@ -33,6 +34,7 @@ app.use(cors(corsOptions));
 app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
+app.use("/api/order", orderRoute);
 
 app.get("/", (req, res) => {
   res.send("Welcome our to online shop API...");
