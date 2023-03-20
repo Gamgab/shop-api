@@ -1,3 +1,4 @@
+const { object } = require("joi");
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
@@ -10,7 +11,7 @@ const orderSchema = new mongoose.Schema(
         brand: { type: String },
         desc: { type: String },
         price: { type: String },
-        image: { type: String },
+        image: { type: Object },
         cartQuantity: { type: Number },
       },
     ],
