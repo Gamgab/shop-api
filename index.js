@@ -34,7 +34,7 @@ app.use(cors(corsOptions));
 app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
-app.use("/api/order", orderRoute);
+app.use("/api/order", order);
 
 app.get("/", (req, res) => {
   res.send("Welcome our to online shop API...");
