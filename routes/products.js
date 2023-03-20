@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
           image: uploadRes,
         });
         const savedProduct = await product.save();
-        res.statusCode(200).send(savedProduct);
+        res.status(200).send(savedProduct);
       }
     }
   } catch (error) {
