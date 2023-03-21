@@ -8,12 +8,12 @@ const router = express.Router();
 // SAVE ORDER
 // isAdmin est la fonction middleware pour vérifier l'autentification
 router.post("/", async (req, res) => {
-  const { cartItems, userId, subtotal } = req.body;
+  const { userId, cartItems, subtotal } = req.body;
 
   try {
     const order = new Order({
       userId: userId,
-      /*products: cartItems,*/
+      products: cartItems,
       subtotal: subtotal,
     });
     const savedOrder = await order.save();

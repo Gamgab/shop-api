@@ -12,6 +12,7 @@ router.post("/", isAdmin, async (req, res) => {
 
   try {
     if (image) {
+      // on save seulement l'url parmi tout ce que retourne cloudinary uploader
       const { url } = await cloudinary.uploader.upload(image, {
         /*const uploadRes = await cloudinary.uploader.upload(image, {*/
         upload_preset: "onlineShop",
