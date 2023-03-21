@@ -12,17 +12,19 @@ router.post("/", isAdmin, async (req, res) => {
 
   try {
     if (image) {
-      const uploadRes = await cloudinary.uploader.upload(image, {
+      const { url } = await cloudinary.uploader.upload(image, {
+        /*const uploadRes = await cloudinary.uploader.upload(image, {*/
         upload_preset: "onlineShop",
       });
+      //console.log(uploadRes);
 
-      if (uploadRes) {
+      if (/*uploadRes*/ url) {
         const product = new Product({
           name,
           brand,
           desc,
           price,
-          image: uploadRes,
+          image: url,
         });
         const savedProduct = await product.save();
         res.status(200).send(savedProduct);
