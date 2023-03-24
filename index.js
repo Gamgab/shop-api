@@ -5,6 +5,7 @@ const register = require("./routes/register");
 const login = require("./routes/login");
 const productsRoute = require("./routes/products");
 const order = require("./routes/order");
+const stripe = require("./routes/stripe");
 
 const products = require("./products");
 
@@ -15,7 +16,7 @@ const app = express();
 app.use(express.json());
 
 let corsOptions = {
-  origin: "http://127.0.0.1:3000",
+  origin: ["http://127.0.0.1:3000", "http://localhost:3000/"],
   methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
   allowedHeaders: [
     "Origin",
@@ -35,6 +36,7 @@ app.use("/api/register", register);
 app.use("/api/login", login);
 app.use("/api/products", productsRoute);
 app.use("/api/order", order);
+app.use("/api/stripe", stripe);
 
 app.get("/", (req, res) => {
   res.send("Welcome our to online shop API...");
