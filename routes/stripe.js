@@ -1,10 +1,9 @@
 const express = require("express");
 const Stripe = require("stripe");
 const { Order } = require("../models/order");
+require("dotenv").config();
 
-const stripe = Stripe(
-  "sk_test_51MpBbmEEFghnI3izrYDkokUdBMAIZYnWEp3wJGeFR7F80j7qH17fd0fb44de3EldIcZ7up3VE5IJq9SZkyuKFr2q00ZqSns4EZ"
-);
+const stripe = Stripe(process.env.STRIPE_KEY);
 
 const router = express.Router();
 

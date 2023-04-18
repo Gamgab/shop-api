@@ -7,7 +7,7 @@ function auth(req, res, next) {
   // si il n'ya pas de token
   if (!token) return res.status(401).send("Accès refusé. Non connecté...");
   try {
-    const jwtSecretKey = "SECRET_KEY";
+    const jwtSecretKey = process.env.JWT_SECRET_KEY;
     const decoded = jwt.verify(token, jwtSecretKey);
     req.user = decoded;
     next();

@@ -6,9 +6,7 @@ const login = require("./routes/login");
 const productsRoute = require("./routes/products");
 const order = require("./routes/order");
 const stripe = require("./routes/stripe");
-
 const products = require("./products");
-
 require("dotenv").config();
 
 const app = express();
@@ -46,8 +44,7 @@ app.get("/products", (req, res) => {
   res.send(products);
 });
 
-const uri =
-  "mongodb+srv://gamgab:shinpoko78@cluster0.fkcfpkx.mongodb.net/e-commerce?retryWrites=true&w=majority";
+const uri = process.env.DB_URI;
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
