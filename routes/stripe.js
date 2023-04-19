@@ -63,8 +63,8 @@ router.post("/create-checkout-session", async (req, res) => {
     customer: customer.id,
     line_items,
     mode: "payment",
-    success_url: "http://localhost:3000/checkout-success",
-    cancel_url: "http://localhost:3000/cart",
+    success_url: "https://Gamgab.github.io/e-commerce/#/checkout-success",
+    cancel_url: "https://Gamgab.github.io/e-commerce/#/cart",
   });
 
   res.send({ url: session.url });
@@ -104,9 +104,8 @@ let endpointSecret;
 
 /* // j'enlève le mot de passe pour le moment, car cela bug un peu,
  // cependant il faut le garder et résoudre le pb car c'est pas très safe sinon
-// en faisant ça j'évite le try
-endpointSecret =
-  "whsec_e7c541b80c5ad02ffc3720d1dffcc31670c9fcdfd1f08357502a51e01e57af47";
+ // en faisant ça j'évite le try
+  endpointSecret = process.env.ENDPOINT_SECRET;
 */
 
 router.post(
