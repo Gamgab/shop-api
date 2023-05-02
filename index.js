@@ -6,7 +6,8 @@ const login = require("./routes/login");
 const productsRoute = require("./routes/products");
 const order = require("./routes/order");
 const stripe = require("./routes/stripe");
-const products = require("./products");
+const user = require("./routes/user");
+//const products = require("./products");
 require("dotenv").config();
 
 const app = express();
@@ -35,14 +36,17 @@ app.use("/api/login", login);
 app.use("/api/products", productsRoute);
 app.use("/api/order", order);
 app.use("/api/stripe", stripe);
+app.use("/api/user", user);
 
 app.get("/", (req, res) => {
-  res.send("Welcome our to online shop API...");
+  res.send("Bienvenue sur mon API e-commerce...");
 });
 
+/*
 app.get("/products", (req, res) => {
   res.send(products);
 });
+*/
 
 const uri = process.env.DB_URI;
 const port = process.env.PORT || 5000;
