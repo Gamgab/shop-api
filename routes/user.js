@@ -4,7 +4,7 @@ const { auth, isAdmin } = require("../middleware/auth");
 
 const router = express.Router();
 
-// GET ORDERS
+// GET USERS
 router.get("/", isAdmin, async (req, res) => {
   const query = req.query.new;
 
@@ -20,7 +20,7 @@ router.get("/", isAdmin, async (req, res) => {
   }
 });
 
-// GET ONE ORDER
+// GET ONE USER
 /*
 router.get("/findOne/:id", auth, async (req, res) => {
   try {
@@ -36,7 +36,7 @@ router.get("/findOne/:id", auth, async (req, res) => {
 });
 */
 
-// EDIT ORDERS
+// EDIT USER
 /*
 router.put("/:id", isAdmin, async (req, res) => {
   try {
@@ -53,5 +53,4 @@ router.put("/:id", isAdmin, async (req, res) => {
   }
 });
 */
-
 module.exports = router;
